@@ -21,20 +21,9 @@ These functions are used in the sanity checking section to ensure the accuracy o
 The command line application allows users to train an image classifier with a specified pre-trained model, using their own dataset. 
 The command line application includes code for data loading, pre-processing, training the model, and testing the model. 
 The training was done with densenet 121, 7 epochs and achieved 77% accuracy. 
-The testing accuracy on a previously unseen dataset is relative. This is an output:
 The command line application supports gpu for Apple's MPS and Nvidia's Cuda.
-
-Prediction
----------------------------------
-Flower      : blackberry lily
-Label       : 102
-Probability : 99.93%
-
-Top K
----------------------------------
-blackberry lily           99.93%
-tiger lily                0.03%
-fire lily                 0.02%
+The testing accuracy on a previously unseen dataset is relative. This is an output:
+<img width="453" alt="Screenshot 2023-03-05 at 1 46 39 PM" src="https://user-images.githubusercontent.com/104724221/222961328-cd490de6-2f09-4601-8490-b65228f68182.png">
 
 The user can specify the pre-trained model to use by passing a command-line argument. The following pre-trained models are available:
 
