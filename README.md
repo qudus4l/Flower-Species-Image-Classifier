@@ -7,8 +7,8 @@ then convert it into a command line application.
 ## Jupyter Notebook Details
 
 The model was developed using Jupyter Notebook, with gpu support for Apple's MPS only. 
-The notebook includes code for data loading, pre-processing, and training the model. 
-The training was done with 7 epochs and achieved a validation accuracy of 92.5%. 
+The notebook includes code for data loading, pre-processing, training the model, and testing the model. 
+The training was done with resnet50 and 7 epochs. It achieved a validation accuracy of 92.5%. 
 The testing accuracy on a previously unseen dataset is 92.3%.
 
 The notebook also includes a function to load the saved checkpoint so that the model doesn't need to be retrained 
@@ -19,6 +19,23 @@ These functions are used in the sanity checking section to ensure the accuracy o
 ## CLI Application Details
 
 The command line application allows users to train an image classifier with a specified pre-trained model, using their own dataset. 
+The command line application includes code for data loading, pre-processing, training the model, and testing the model. 
+The training was done with densenet 121, 7 epochs and achieved 77% accuracy. 
+The testing accuracy on a previously unseen dataset is relative. This is an output:
+The command line application supports gpu for Apple's MPS and Nvidia's Cuda.
+
+Prediction
+---------------------------------
+Flower      : blackberry lily
+Label       : 102
+Probability : 99.93%
+
+Top K
+---------------------------------
+blackberry lily           99.93%
+tiger lily                0.03%
+fire lily                 0.02%
+
 The user can specify the pre-trained model to use by passing a command-line argument. The following pre-trained models are available:
 
 vgg11
@@ -32,7 +49,7 @@ densenet201
 To run the training script, use the following command:
 
 python train.py [data_directory] --arch [pretrained_model] --hidden_units [hidden_units] --epochs [num_epochs] --gpu --weights [pretrained_model_Weights.IMAGENET1K_V1]
-To avoid warnings when using the pretrained argument in TensorFlow, use the weights argument instead. 
+To avoid warnings when using the pretrained argument in Pytorch, use the weights argument instead. 
 For example, instead of using pretrained=True with VGG-16, use weights = VGG_16_Weights.IMAGENET1K_V1.
 It's important to note that the weights argument is case-sensitive. 
 For instance, the correct format for DenseNet is DenseNet_Weights.IMAGENET1K_V1, not Densenet_Weights.IMAGENET1K_V1 or DENSENET_Weights.IMAGENET1K_V1.
